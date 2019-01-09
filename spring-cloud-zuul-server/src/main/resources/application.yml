@@ -1,0 +1,23 @@
+server:
+  port: 80
+eureka:
+  client:
+    service-url:
+      defaultZone: http://server2:7002/eureka/,http://server2:7002/eureka/,http://server3:7003/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: zuul
+
+zuul:
+  routes:
+    api.serviceId: provider-server
+    api.path: /api/**
+  ignored-services: provider-server
+  prefix: /getaway
+
+spring:
+  application:
+    name: zuul-server
+
+
+#http://lgj.study.com/test-zuul/getaway/provider/test    lgj.study.com ĞèÒªÅäÖÃhost
